@@ -1,12 +1,13 @@
 import React from 'react';
 import './App.css';
 import StudentCollection from './components/StudentCollection';
+import Link from './components/Link';
 
-function App() {
+function App () {
   return (
     <div className="App">
       <h1>Welcome to the Student React App!</h1>
-      <StudentCollection/>
+      <StudentCollection />
     </div>
   );
 }

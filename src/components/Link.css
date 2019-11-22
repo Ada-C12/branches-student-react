@@ -1,0 +1,8 @@
+.link-container {
+  color: purple;
+  font-family: 'Comic Sans MS';
+}
+
+.link-container a:hover {
+  color: red;
+}
