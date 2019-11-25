@@ -15,12 +15,20 @@ class Student extends React.Component {
     }
   }
 
-  oopsBirthday(){
-
-    this.setState({birthday: 'Oct 22nd'})
+  onBirthdayChange = (event) => {
+    this.setState({ 
+      birthday: event.target.value
+    });
   }
 
-  render() {
+  togglePronounsDisplay = () => {
+    this.setState({
+      displayPronouns: !this.state.displayPronouns,
+
+    })
+  }
+
+  render = () => {
 
     console.log('the value of props is', this.props);
 
@@ -28,14 +36,20 @@ class Student extends React.Component {
 
     // I want to pass specific data from A to B. The format of this data is a name/value pair.
     // To SEND the data from A to B, when I use the <>, I will pass every name/value pair like they are attributes
+    let pronouns = null;
+    if (this.state.displayPronouns) {
+      pronouns = <li>Pronouns: {this.state.pronouns}</li>;
+    }
+    
     return (
       <section>
         <h2 className="student-name">{this.state.fullName} -- "{this.props.nickName}"</h2>
         <ul className="student-details">
-          <li>Pronouns: {this.state.pronouns}</li>
+          {pronouns}
           <li>Birthday: {this.state.birthday}</li>
         </ul>
-        {this.oopsBirthday()}
+        <button onClick={this.togglePronounsDisplay}>Toggle Display of Pronouns</button>
+        <p>Change your birthday: <input onChange={ this.onBirthdayChange }></input></p>
       </section>
     );
   }
