@@ -3,20 +3,28 @@ import PropTypes from 'prop-types';
 
 import './Student.css'
 
-const Student = (props) => {
-  console.log('the value of props is', props);
+class Student extends React.Component {
 
-  // I want to pass specific data from A to B. The format of this data is a name/value pair.
-  // To SEND the data from A to B, when I use the <>, I will pass every name/value pair like they are attributes
-  return (
-    <section>
-      <h2 className="student-name">{props.fullName} -- "{props.nickName}"</h2>
-      <ul className="student-details">
-        <li>Pronouns: {props.pronouns}</li>
-        <li>Birthday: {props.birthday}</li>
-      </ul>
-    </section>
-  );
+  constructor(props) {
+    super(props);
+  }
+
+  render() {
+
+    console.log('the value of props is', this.props);
+
+    // I want to pass specific data from A to B. The format of this data is a name/value pair.
+    // To SEND the data from A to B, when I use the <>, I will pass every name/value pair like they are attributes
+    return (
+      <section>
+        <h2 className="student-name">{this.props.fullName} -- "{this.props.nickName}"</h2>
+        <ul className="student-details">
+          <li>Pronouns: {this.props.pronouns}</li>
+          <li>Birthday: {this.props.birthday}</li>
+        </ul>
+      </section>
+    );
+  }
 }
 
 Student.propTypes = {
