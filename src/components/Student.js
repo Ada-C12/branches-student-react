@@ -5,9 +5,10 @@ import './Student.css'
 
 const Student = (props) => {
   return (
-    <section>
+    <section className={ props.isPresent ? "present" : "absent" }>
       <h2 className="student-name">{props.fullName} -- "{props.nickName}"</h2>
-      <p>Is {props.fullName} present today? { props.isPresent ? "yes" : "no" }</p>
+
+      <button disabled={ props.isPresent }>Mark Present</button>
     </section>
   );
 }
