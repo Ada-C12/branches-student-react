@@ -41,6 +41,7 @@ Student.propTypes = {
   pronouns: PropTypes.string.isRequired,
   birthday: PropTypes.string,
   displayPronouns: PropTypes.bool,
+  toggleDisplayPronouns: PropTypes.func,
   demos: PropTypes.shape({
     age: PropTypes.number.isRequired,
     grade: PropTypes.string,
