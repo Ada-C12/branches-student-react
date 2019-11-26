@@ -19,7 +19,15 @@ class StudentCollection extends Component {
     student.displayPronouns = !student.displayPronouns;
 
     this.setState({ students });
+  }
 
+  updateStudentBirthday = (id, birthday) => {
+    const { students } = this.state;
+    const student = students.find((student) => student.id === id);
+
+    student.birthday = birthday;
+
+    this.setState({ students });
   }
 
   createStudentComponents = (list) => {
@@ -38,8 +46,10 @@ class StudentCollection extends Component {
             nickName={student.nickName}
             pronouns={student.pronouns}
             demos={demographics}
+            birthday={student.birthday}
             displayPronouns={student.displayPronouns}
             toggleDisplayPronouns={this.toggleDisplayPronouns}
+            updateBirthday={this.updateStudentBirthday}
           />
         </li>
       );
