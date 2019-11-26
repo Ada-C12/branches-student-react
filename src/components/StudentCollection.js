@@ -1,47 +1,65 @@
 import React, { Component } from 'react';
 import Student from './Student';
 
-const StudentCollection = () => {
+class StudentCollection extends Component {
+  constructor(props) {
+    super(props);
 
-  const students = [
-    {
-      name: "Ada",
-      nickName: "The Lovelacer",
-      pronouns: 'They/Them'
-    },
-    {
-      name: "Katherine",
-      nickName: "\"out of this world\"",
-      pronouns: 'She/Her'
-    },
-  ];
+    this.state = {
+      students: this.props.students,
+    };
+  }
 
-  const studentComponents = students.map((student, i) => {
-    const demographics = {
-      age: 21,
-      grade: 'Junior',
-      house: 'Slytheryn',
-    }
+  toggleDisplayPronouns = (studentId) => {
+    console.log('Toggling Student Pronoun', studentId);
+    const { students } = this.state;
+    console.log(students);
+    const student = students.find((student) => student.id === studentId);
+
+    student.displayPronouns = !student.displayPronouns;
+
+    this.setState({ students });
+
+  }
+
+  createStudentComponents = (list) => {
+
+    return list.map((student, i) => {
+      const demographics = {
+        age: 21,
+        grade: 'Junior',
+        house: 'Slytheryn',
+      }
+      return (
+        <li key={i} >
+          <Student
+            id={student.id}
+            fullName={student.name}
+            nickName={student.nickName}
+            pronouns={student.pronouns}
+            demos={demographics}
+            displayPronouns={student.displayPronouns}
+            toggleDisplayPronouns={this.toggleDisplayPronouns}
+          />
+        </li>
+      );
+    });
+  }
+
+  render () {
+    const { students } = this.state;
+    const studentComponents = this.createStudentComponents(students);
+
     return (
-      <li key={i}>
-        <Student
-          fullName={student.name}
-          nickName={student.nickName}
-          pronouns={student.pronouns}
-        />
-      </li>
-    )
-  });
+      <section>
+        <h2>Student Collection</h2>
 
-  return (
-    <section>
-      <h2>Student Collection</h2>
-
-      <ul>
-        {studentComponents}
-      </ul>
-    </section>
-  );
+        <ul>
+          {studentComponents}
+        </ul>
+      </section>
+    );
+  }
 }
 
 export default StudentCollection;
