@@ -8,11 +8,18 @@ const togglePronounsDisplay = (props) => {
   props.toggleDisplayPronouns(props.id);
 }
 
-const onBirthdayChange = () => {
-  console.log('onBirthdayChange');
-}
+
 
 const Student = (props) => {
+
+  const onBirthdayChange = (event) => {
+    console.log('onBirthdayChange');
+    if (event && event.target && event.target.value) {
+      props.updateBirthday(props.id, event.target.value);
+    } else {
+      console.log('event is broken onBirthdayChange');
+    }
+  }
 
   const { birthday, fullName, nickName } = props;
 
@@ -30,7 +37,7 @@ const Student = (props) => {
       </ul>
       <button onClick={() => togglePronounsDisplay(props)}>Toggle Display of Pronouns</button>
       {pronouns ? pronouns : ""}
-      <p>Change your birthday: <input onChange={() => onBirthdayChange()}></input></p>
+      <p>Change your birthday: <input value={props.birthday} onChange={onBirthdayChange}></input></p>
     </section>
   );
 }
