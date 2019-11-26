@@ -20,10 +20,20 @@ class StudentCollection extends React.Component {
           nickName: "\"out of this world\"",
           pronouns: 'She/Her',
           birthday: 'March.',
-          isPresent: true,
+          isPresent: false,
         },
       ],
     }
+  }
+
+  // Every Event Handler MUST be defined as an arrow function like this... otherwise 'this' will not work
+  markPresent = (studentIdentifier) => {
+    const updatedStudents = this.state.students;
+    updatedStudents[studentIdentifier].isPresent = true;
+
+    this.setState({
+      students: updatedStudents,
+    });
   }
 
   render() {
@@ -35,6 +45,8 @@ class StudentCollection extends React.Component {
             nickName={student.nickName}
             pronouns={student.pronouns}
             isPresent={student.isPresent}
+            markPresentCallback={this.markPresent}
+            studentIdentifier={i}
           />
         </li>
       )
