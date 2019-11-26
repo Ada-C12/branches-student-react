@@ -13,12 +13,14 @@ class StudentCollection extends React.Component {
           nickName: "The Lovelacer",
           pronouns: 'They/Them',
           birthday: 'October?????',
+          isPresent: false,
         },
         {
           name: "Katherine",
           nickName: "\"out of this world\"",
           pronouns: 'She/Her',
-          birthday: 'March.'
+          birthday: 'March.',
+          isPresent: true,
         },
       ],
     }
@@ -32,6 +34,7 @@ class StudentCollection extends React.Component {
             fullName={student.name}
             nickName={student.nickName}
             pronouns={student.pronouns}
+            isPresent={student.isPresent}
           />
         </li>
       )
