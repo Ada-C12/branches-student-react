@@ -10,6 +10,7 @@ const students = [
     nickName: "The Lovelacer",
     pronouns: 'They/Them',
     displayPronouns: false,
+    birthday: '2011-01-02',
   },
   {
     id: 2,
@@ -17,6 +18,7 @@ const students = [
     nickName: "\"out of this world\"",
     pronouns: 'She/Her',
     displayPronouns: false,
+    birthday: '1977-06-21',
   },
 ]
 
