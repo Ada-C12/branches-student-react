@@ -1,5 +1,6 @@
 import React from 'react';
 import Student from './Student';
+import NewStudentForm from './NewStudentForm';
 
 class StudentCollection extends React.Component {
 
@@ -36,7 +37,17 @@ class StudentCollection extends React.Component {
     });
   }
 
-  render() {
+  addStudent = (student) => {
+    console.log(`Adding Student ${ student }`);
+    const { students } = this.state;
+
+    students.push(student);
+    this.setState({
+      students,
+    });
+  }
+
+  render () {
     const studentComponents = this.state.students.map((student, i) => {
       return (
         <li key={i}>
@@ -51,14 +62,15 @@ class StudentCollection extends React.Component {
         </li>
       )
     });
-  
+
     return (
       <section>
         <h2>Student Collection</h2>
-  
+
         <ul>
           {studentComponents}
         </ul>
+        <NewStudentForm addStudentCallback={this.addStudent} />
       </section>
     );
   }
