@@ -1,0 +1,9 @@
+.valid-nickname {
+  background-color: greenyellow;
+  color: olive;
+}
+
+.invalid-nickname {
+  background-color: tomato;
+  color: papayawhip;
+}

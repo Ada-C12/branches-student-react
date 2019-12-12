@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import './NewStudentForm.css';
 
 class NewStudentForm extends Component {
   constructor(props) {
@@ -13,40 +14,19 @@ class NewStudentForm extends Component {
     }
   }
 
-  onNameChange = (event) => {
-    const name = event.target.value;
-
-    // this.setState({
-    //   name,
-    // });
-    this.setState({
-      name: name,
-    });
+  nickNameValid = () => {
+    return this.state.nickName.match(/\S+@\S+/);
   }
 
-  onNickNameChange = (event) => {
-    const nickName = event.target.value;
+  onInputChange = (event) => {
+    const updatedState = {};
 
-    this.setState({
-      nickName,
-    });
+    const field = event.target.name;
+    const value = event.target.value;
 
-  }
+    updatedState[field] = value;
 
-  onPronounsChange = (event) => {
-    const pronouns = event.target.value;
-
-    this.setState({
-      pronouns,
-    });
-  }
-
-  onBirthdayChange = (event) => {
-    const birthday = event.target.value;
-
-    this.setState({
-      birthday,
-    });
+    this.setState(updatedState);
   }
 
   onSubmitStudent = (event) => {
@@ -85,7 +65,7 @@ class NewStudentForm extends Component {
             name="name"
             id="name"
             type="text"
-            onChange={this.onNameChange}
+            onChange={this.onInputChange}
             value={this.state.name}
           />
         </div>
@@ -95,7 +75,8 @@ class NewStudentForm extends Component {
             name="nickName"
             id="nickName"
             type="text"
-            onChange={this.onNickNameChange}
+            className={this.nickNameValid() ? "valid-nickname" : "invalid-nickname"}
+            onChange={this.onInputChange}
             value={this.state.nickName}
           />
         </div>
@@ -104,7 +85,7 @@ class NewStudentForm extends Component {
           <select
             name="pronouns"
             id="pronouns"
-            onChange={this.onPronounsChange}
+            onChange={this.onInputChange}
             value={this.state.pronouns}
           >
             <option value=""></option>
@@ -121,7 +102,7 @@ class NewStudentForm extends Component {
             name="birthday"
             id="birthday"
             type="date"
-            onChange={this.onBirthdayChange}
+            onChange={this.onInputChange}
             value={this.state.birthday}
           />
         </div>
